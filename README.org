@@ -1,4 +1,6 @@
 * Description
+[[./screenshot.png]]
+
 This [[https://github.com/lutris/lutris][Lutris]] YAML "script" installs a 64-bit version of [[http://digitalfossils.com/][NVil]].
 
 The script is compatible with standalone version of NVil, downloadable directly from digitalfossils website and all required files (program archive and SlimDX) are automatically pulled from that website. You can choose to install a ~dotnet461~ or Mono version. The latter is much faster to install, but has some problems that are absent in the .NET 4.6.2 version. I suggest trying both and staying with the one that works best with you.
