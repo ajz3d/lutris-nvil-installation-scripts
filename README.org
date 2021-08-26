@@ -3,7 +3,10 @@
 
 This [[https://github.com/lutris/lutris][Lutris]] YAML "script" installs a 64-bit version of [[http://digitalfossils.com/][NVil]].
 
-The script is compatible with standalone version of NVil, downloadable directly from digitalfossils website and all required files (program archive and SlimDX) are automatically pulled from that website. You can choose to install a ~dotnet461~ or Mono version. The latter is much faster to install, but has some problems that are absent in the .NET 4.6.2 version. I suggest trying both and staying with the one that works best with you.
+The script is compatible with standalone version of NVil, downloadable directly from digitalfossils website and all required files (program archive and SlimDX) are automatically pulled from that website.
+You can choose to install a ~dotnet461~ or Mono version.
+The latter is much faster to install, but has some problems that are absent in the .NET 4.6.1 version.
+I suggest trying both and staying with the one that works best with you.
 
 * Installation
 To install, clone this repository and invoke Lutris with:
@@ -12,18 +15,27 @@ To install, clone this repository and invoke Lutris with:
 lutris -i path/to/installation_script.yml
 #+end_src
 
-At the end of the installation procedure, you will be prompted to install 64-bit SlimDX, which is required to run NVil. Unfortunately I couldn't figure out how to make this part of the installer silent.
+At the end of the installation procedure, you will be prompted to install 64-bit SlimDX, which is required to run NVil.
+Unfortunately I couldn't figure out how to make this part of the installer silent.
 
-After installation and before starting the program --- kill all Wine processes. Then restart Lutris. This is an important step, because for some reason the program will not start properly if this is not done. It will either have a completely broken GUI or will simply throw an ~Object reference not set to an instance of an object~ exception. Both of these will prevent you from using NVil.
+After installation and before starting the program --- kill all Wine processes.
+Then restart Lutris.
+This is an important step, because for some reason the program will not start properly if this is not done.
+It will either have a completely broken GUI or will simply throw an ~Object reference not set to an instance of an object~ exception.
+Both of these will prevent you from using NVil.
 
 * Known Quirks And Problems
 ** Common
-- About 1/10th of the top part of the main viewport is cropped out and not used for rendering. This issue is specific to 64-bit architecture and does not occur on 32-bit installation.
-- GUI actions are slightly slower than on Windows version.
-- Right after starting NVil you will see some flickering on certain UI elements, but it will disappear after a while of using the program.
-- Radial menus cause viewport to go blank when they're displayed. They are also very slow to draw on screen and incapable of rendering transparency.
-- Top menu items are suffixed with an ampersand character.
++ About 1/10th of the top part of the main viewport is cropped out and not used for rendering.
+  This issue is specific to 64-bit architecture and does not occur on 32-bit installation.
++ GUI actions are slightly slower than on Windows version.
++ Right after starting NVil you will see some flickering on certain UI elements, but it will disappear after a while of using the program.
++ Radial menus cause viewport to go blank when they're displayed.
+  They are also very slow to draw on screen and incapable of rendering transparency.
++ Top menu items are suffixed with an ampersand character.
 ** .NET version
 - Two black rectangles appear on top and at the bottom of the splash screen.
 ** Mono Version
-- Any tooltip will cause ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ exception to appear in a modal window. Fortunately this doesn't crash the program, but is a real nuisance. It is currently not possible to completely turn off tooltips in NVil.
+- Any tooltip will cause ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ exception to appear in a modal window.
+  Fortunately this doesn't crash the program, but is a real nuisance.
+  It is currently not possible to completely turn off tooltips in NVil.
