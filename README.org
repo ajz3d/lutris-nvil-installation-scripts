@@ -21,7 +21,7 @@ Scripts for older NVil versions can be found in ~./archive~ directory.
 At the end of the installation procedure, you will be prompted to install 64-bit SlimDX, which is required to run NVil.
 Unfortunately I couldn't figure out how to make this part of the installer silent.
 
-**Important!** After installation and before starting the program --- kill all Wine processes.
+*Important!* After installation and before starting the program --- kill all Wine processes.
 Then restart Lutris.
 This is a crucial step, because for some reason the program will not start properly if this is not done.
 It will either have a completely broken GUI or will simply throw an ~Object reference not set to an instance of an object~ exception.
