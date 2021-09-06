@@ -5,7 +5,7 @@
 
 These scripts are compatible with standalone version of NVil, downloadable directly from DigitalFossils website and all required files (program archive and SlimDX) are automatically pulled from that website.
 You can choose to install a ~dotnet48~ or Mono version.
-The latter is much faster to install, but has some problems that are absent in the .NET 4.8 version (see [[Mono Version]] for more information).
+The latter is much faster to install, but has some problems that are absent in the .NET 4.8 version (for more information read the /Known Problems/ section at the bottom of this document).
 I suggest trying both and staying with one that works best with you. Keep in mind that NVil+Mono installation contains less non-free software because it does not install a proprietary .NET framework.
 
 * Installation
