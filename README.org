@@ -1,41 +1,49 @@
 * Description
 [[./screenshot.png]]
 
-This [[https://github.com/lutris/lutris][Lutris]] YAML "script" installs a 64-bit version of [[http://digitalfossils.com/][NVil]].
+[[https://github.com/lutris/lutris][Lutris]] YAML "scripts" for installing a 64-bit version of [[http://digitalfossils.com/][NVil]].
 
-The script is compatible with standalone version of NVil, downloadable directly from digitalfossils website and all required files (program archive and SlimDX) are automatically pulled from that website.
-You can choose to install a ~dotnet461~ or Mono version.
-The latter is much faster to install, but has some problems that are absent in the .NET 4.6.1 version.
-I suggest trying both and staying with the one that works best with you.
+These scripts are compatible with standalone version of NVil, downloadable directly from DigitalFossils website and all required files (program archive and SlimDX) are automatically pulled from that website.
+You can choose to install a ~dotnet48~ or Mono version.
+The latter is much faster to install, but has some problems that are absent in the .NET 4.8 version (see [[Mono Version]] for more information).
+I suggest trying both and staying with one that works best with you. Keep in mind that NVil+Mono installation contains less non-free software because it does not install a proprietary .NET framework.
 
 * Installation
-To install, clone this repository and invoke Lutris with:
+To install NVil, clone this repository to a path of your choice and invoke Lutris with:
 
 #+begin_src bash
-lutris -i path/to/installation_script.yml
+lutris -i path/to/installation-script.yml
 #+end_src
+
+Where ~installation-script.yml~ is ~nvil-installer-latest.yml~ or ~nvil-mono-installer-latest.yml~ --- this will pull and install the most recent version of NVil.
+Scripts for older NVil versions can be found in ~./archive~ directory.
 
 At the end of the installation procedure, you will be prompted to install 64-bit SlimDX, which is required to run NVil.
 Unfortunately I couldn't figure out how to make this part of the installer silent.
 
-After installation and before starting the program --- kill all Wine processes.
+**Important!** After installation and before starting the program --- kill all Wine processes.
 Then restart Lutris.
-This is an important step, because for some reason the program will not start properly if this is not done.
+This is a crucial step, because for some reason the program will not start properly if this is not done.
 It will either have a completely broken GUI or will simply throw an ~Object reference not set to an instance of an object~ exception.
-Both of these will prevent you from using NVil.
+Both of these will prevent you from using NVil and most of the time you will have to recreate nvil wineprefix (delete NVil from Lutris and re-run the installation script).
+
+* Updating NVil
+Reinstallation of the whole wineprefix is not required to update the program unless something goes wrong and becomes incompatible with version of Wine that the installer is configured to use.
+To update NVil to a newer version simply download the archive file from [[http://digitalfossils.com/nvil-forum//index.php?board=2.0][DigitalFossils News and Updates]] page and extract it to ~your_wineprefix/drive_c/nvil~ overwriting all files.
 
 * Known Quirks And Problems
 ** Common
-+ About 1/10th of the top part of the main viewport is cropped out and not used for rendering.
-  This issue is specific to 64-bit architecture and does not occur on 32-bit installation.
-+ GUI actions are slightly slower than on Windows version.
-+ Right after starting NVil you will see some flickering on certain UI elements, but it will disappear after a while of using the program.
-+ Radial menus cause viewport to go blank when they're displayed.
-  They are also very slow to draw on screen and incapable of rendering transparency.
-+ Top menu items are suffixed with an ampersand character.
+- Some GUI actions are slightly slower than on Windows.
+- Right after NVil starts some GUI elements will flicker.
+  The flickering will disappear after a while of using the program.
+- Some UI elements, like radial menus, setting some options in /Edit → Preferences/, or moving child windows, can cause the viewport to briefly flicker.
+- Radial menus are slow to draw on screen.
+- Top menu items are trailed with an ampersand character.
+- Some operations are "jumpy" if performed with fast mouse movements, even though the viewport framerate is excellent. For example --- moving objects or subobjects too quickly, extruding faces, etc. This is probably the biggest problem with NVil running under Wine 64-bit. There's no such problem under Wine 32-bit.
 ** .NET version
 - Two black rectangles appear on top and at the bottom of the splash screen.
 ** Mono Version
-- Any tooltip will cause ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ exception to appear in a modal window.
-  Fortunately this doesn't crash the program, but is a real nuisance.
-  It is currently not possible to completely turn off tooltips in NVil.
+- By default, non-standard Windows tooltips that some NVil GUI elements use will throw ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ exception and will not appear on screen.
+  This is mostly limited to top and bottom default toolbars as well as custom user windows.
+  For toolbars, These non-standard tooltips can be disabled in /Edit → Preferences → Options 1 → Tooltip on toolbar enabled/.
+  To prevent NVil from throwing exception caused by tooltips from custom user windows, /Window → Use Windows Standard Tooltip Style/ must be enabled in context menu of the user window customization mode (press RMB on user window, then select /Enter Customization/).

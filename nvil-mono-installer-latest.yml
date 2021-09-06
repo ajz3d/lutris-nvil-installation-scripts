@@ -1,0 +1,43 @@
+name: NVil Mono
+game_slug: nvil-mono
+version: NVil-Mono Sep-05-21
+slug: nvil-mono-installer-2021-09-05
+runner: wine
+
+script:
+  game:
+    exe: "$GAMEDIR/drive_c/nvil/NVil 1.0.exe"
+    arch: win64
+    prefix: $GAMEDIR
+
+  files:
+    - program_archive: http://www.digitalfossils.com/Download/NVil-Sep-05-21.rar
+    - slimdx: http://www.digitalfossils.com/Download/SlimDXInstallers.rar
+
+  installer:
+    - extract:
+        description: Extracting NVil archive...
+        file: program_archive
+        dst: $GAMEDIR/drive_c/nvil
+    - extract:
+        description: Extracting SlimDX libraries...
+        file: slimdx
+        dst: $GAMEDIR/drive_c/slimdx_installers
+    - task:
+        description: Creating wineprefix...
+        name: create_prefix
+        arch: win64
+        install_mono: true
+    - task:
+        description: Installing gdiplus...
+        name: winetricks
+        app: gdiplus
+    - task:
+        description: Installing SlimDX...
+        name: wineexec
+        executable: "$GAMEDIR/drive_c/slimdx_installers/SlimDX Runtime .NET 4.0 x64 (January 2012).msi"
+
+  wine:
+    arch: win64
+    version: lutris-6.14-3-x86_64
+    esync: true
