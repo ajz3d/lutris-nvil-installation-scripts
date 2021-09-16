@@ -1,7 +1,7 @@
 name: NVil Mono
 game_slug: nvil-mono
-version: NVil-Mono Sep-12-21
-slug: nvil-mono-installer-2021-09-12
+version: NVil-Mono Sep-05-21
+slug: nvil-mono-installer-2021-09-05
 runner: wine
 
 script:
@@ -11,7 +11,7 @@ script:
     prefix: $GAMEDIR
 
   files:
-    - program_archive: http://www.digitalfossils.com/Download/NVil-Sep-12-21.rar
+    - program_archive: http://www.digitalfossils.com/Download/NVil-Sep-05-21.rar
     - slimdx: http://www.digitalfossils.com/Download/SlimDXInstallers.rar
 
   installer:

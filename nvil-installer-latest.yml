@@ -1,7 +1,7 @@
 name: NVil
 game_slug: nvil
-version: NVil Sep-05-21
-slug: nvil-installer-2021-09-05
+version: NVil Sep-12-21
+slug: nvil-installer-2021-09-12
 runner: wine
 
 script:
@@ -11,7 +11,7 @@ script:
     prefix: $GAMEDIR
 
   files:
-    - program_archive: http://www.digitalfossils.com/Download/NVil-Sep-05-21.rar
+    - program_archive: http://www.digitalfossils.com/Download/NVil-Sep-12-21.rar
     - slimdx: http://www.digitalfossils.com/Download/SlimDXInstallers.rar
 
   installer:

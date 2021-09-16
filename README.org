@@ -39,7 +39,6 @@ To update NVil to a newer version simply download the archive file from [[http:/
 - Some UI elements, like radial menus, setting some options in /Edit → Preferences/, or moving child windows, can cause the viewport to briefly flicker.
 - Radial menus are slow to draw on screen.
 - Top menu items are trailed with an ampersand character.
-- Some operations are "jumpy" if performed with fast mouse movements, even though the viewport framerate is excellent. For example --- moving objects or subobjects too quickly, extruding faces, etc. This is probably the biggest problem with NVil running under Wine 64-bit. There's no such problem under Wine 32-bit.
 ** .NET version
 - Two black rectangles appear on top and at the bottom of the splash screen.
 ** Mono Version
