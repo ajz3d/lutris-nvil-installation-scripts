@@ -40,4 +40,5 @@ script:
   wine:
     arch: win64
     version: lutris-6.14-3-x86_64
+    dxvk: false
     esync: true
