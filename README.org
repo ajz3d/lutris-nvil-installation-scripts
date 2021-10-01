@@ -1,12 +1,18 @@
 * Description
 [[./screenshot.png]]
 
-[[https://github.com/lutris/lutris][Lutris]] YAML "scripts" for installing a 64-bit version of [[http://digitalfossils.com/][NVil]].
+[[https://github.com/lutris/lutris][Lutris]] YAML "scripts" for installing a 64-bit version of [[http://digitalfossils.com/][NVil]] on a GNU/Linux operating system.
 
-These scripts are compatible with standalone version of NVil, downloadable directly from DigitalFossils website and all required files (program archive and SlimDX) are automatically pulled from that website.
-You can choose to install a ~dotnet48~ or Mono version.
-The latter is much faster to install, but has some problems that are absent in the .NET 4.8 version (for more information read the /Known Problems/ section at the bottom of this document).
-I suggest trying both and staying with one that works best with you. Keep in mind that NVil+Mono installation contains less non-free software because it does not install a proprietary .NET framework.
+These scripts are compatible with standalone version of NVil, downloadable directly from [[http://digitalfossils.com/nvil-forum/index.php?board=2.0][DigitalFossils]] forum, and all required files (program archive and SlimDX) are automatically pulled from that website.
+You can choose to install a ~dotnet48~ or [[https://wiki.winehq.org/Mono][Mono]] version (~dotnet48~ is installed with [[https://github.com/Winetricks/winetricks][winetricks]]).
+The latter (Mono) is much faster to install, but has some minor problems which are absent in the .NET 4.8 version (for more information consult the /Known Quirks And Problems/ section at the bottom of this document).
+
+I suggest trying both and sticking with one that works best with you.
+Keep in mind though, that NVil+Mono installation contains less non-free software, because it does not install Microsoft's proprietary .NET framework.
+I've also tested it more thoroughly than the ~dotnet48~ installation.
+
+To save yourself some frustration, please read this whole document.
+Especially the /Known Quirks And Problems/ section, and paragraphs marked as *Important*.
 
 * Installation
 To install NVil, clone this repository to a path of your choice and invoke Lutris with:
@@ -24,25 +30,27 @@ Unfortunately I couldn't figure out how to make this part of the installer silen
 *Important!* After installation and before starting the program --- kill all Wine processes.
 Then restart Lutris.
 This is a crucial step, because for some reason the program will not start properly if this is not done.
-It will either have a completely broken GUI or will simply throw an ~Object reference not set to an instance of an object~ exception.
-Both of these will prevent you from using NVil and most of the time you will have to recreate nvil wineprefix (delete NVil from Lutris and re-run the installation script).
+It will either have a completely broken GUI, or will simply throw an "[[https://invidious.snopyta.org/watch?v=4V2C0X4qqLY][Object reference not set to an instance of an object]]" exception.
+Both of these will prevent you from using NVil, and most of the time you will have to recreate Nvil wineprefix by deleting NVil from Lutris and re-running the installation script.
 
 * Updating NVil
-Reinstallation of the whole wineprefix is not required to update the program unless something goes wrong and becomes incompatible with version of Wine that the installer is configured to use.
-To update NVil to a newer version simply download the archive file from [[http://digitalfossils.com/nvil-forum//index.php?board=2.0][DigitalFossils News and Updates]] page and extract it to ~your_wineprefix/drive_c/nvil~ overwriting all files.
+Reinstallation of the whole wineprefix is not required to update the program, unless something goes wrong and becomes incompatible with version of Wine that the installer is configured to use.
+To update NVil to a newer version, simply download the archive file from [[http://digitalfossils.com/nvil-forum//index.php?board=2.0][DigitalFossils News and Updates]] subforum and extract it to ~your_wineprefix/drive_c/nvil~, overwriting all files in the process.
 
 * Known Quirks And Problems
 ** Common
-- Some GUI actions are slightly slower than on Windows.
-- Right after NVil starts some GUI elements will flicker.
-  The flickering will disappear after a while of using the program.
-- Some UI elements, like radial menus, setting some options in /Edit → Preferences/, or moving child windows, can cause the viewport to briefly flicker.
-- Radial menus are slow to draw on screen.
+- *Important!* Multi-threading does not work well and will slow down many tools (especially Draw Mesh).
+  Be sure to turn it off in /Edit → Preferences → Options 1 → Multi Threading Disabled/ (NVil Sep-28-21+).
+- Some GUI actions might be slightly slower than on Windows.
+- Right after NVil starts, some GUI elements might flicker. The flickering will disappear after a while of using the program.
+- Some UI elements, like radial menus, setting some options in /Edit → Preferences/, or moving child windows, can cause the viewport to briefly flicker, though this has improved in the most recent NVil versions.
+- Radial menus are slightly slower to draw on screen than on MS Windows.
 - Top menu items are trailed with an ampersand character.
+- Switching from single-view to quad-view (and vice-versa) for the first time in each session, might be slower than subsequent switches.
 ** .NET version
 - Two black rectangles appear on top and at the bottom of the splash screen.
 ** Mono Version
-- By default, non-standard Windows tooltips that some NVil GUI elements use will throw ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ exception and will not appear on screen.
-  This is mostly limited to top and bottom default toolbars as well as custom user windows.
+- By default, non-standard Windows tooltips, which are used by some GUI elements, will throw ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ and will not appear on screen.
+  This is mostly limited to top and bottom default toolbars, as well as custom user windows.
   For toolbars, These non-standard tooltips can be disabled in /Edit → Preferences → Options 1 → Tooltip on toolbar enabled/.
-  To prevent NVil from throwing exception caused by tooltips from custom user windows, /Window → Use Windows Standard Tooltip Style/ must be enabled in context menu of the user window customization mode (press RMB on user window, then select /Enter Customization/).
+  To prevent NVil from throwing exception caused by tooltips of custom user windows, /Window → Use Windows Standard Tooltip Style/ must be enabled in the context menu of user window customization mode (press RMB on user window, then select /Enter Customization/).
