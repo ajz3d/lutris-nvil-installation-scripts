@@ -21,8 +21,7 @@ To install NVil, clone this repository to a path of your choice and invoke Lutri
 lutris -i path/to/installation-script.yml
 #+end_src
 
-Where ~installation-script.yml~ is ~nvil-installer-latest.yml~ or ~nvil-mono-installer-latest.yml~ --- this will pull and install the most recent version of NVil.
-Scripts for older NVil versions can be found in ~./archive~ directory.
+Where ~installation-script.yml~ is either ~nvil-installer-latest.yml~ or ~nvil-mono-installer-latest.yml~ --- this will pull and install the most recent version of NVil.
 
 At the end of the installation procedure, you will be prompted to install 64-bit SlimDX, which is required to run NVil.
 Unfortunately I couldn't figure out how to make this part of the installer silent.
