@@ -10,7 +10,7 @@ The latter (Mono) is much faster to install, but has some minor problems which a
 Keep in mind though, that NVil+Mono installation flavor contains less non-free software because it does not install Microsoft's proprietary .NET framework.
 I've also tested it more thoroughly than the ~dotnet48~ installation.
 
-Personally, I suggest to completely ~dotnet48~ flavor.
+Personally, I suggest to completely skip the ~dotnet48~ flavor.
 Recent versions of NVil work very well with Mono, so there's no further need to maintain the .NET script and it will be deleted in the near future.
 
 To save yourself some frustration, please read this whole document.
