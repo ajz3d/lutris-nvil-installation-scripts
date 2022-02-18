@@ -42,14 +42,14 @@ To update NVil to a newer version, simply download the archive file from [[http:
 ** Common
 - *Important!* Multi-threading does not work well and will slow down many tools (especially Draw Mesh).
   Be sure to turn it off in /Edit → Preferences → Options 1 → Multi Threading Disabled/ (NVil Sep-28-21+).
-- Some GUI actions might be slightly slower than on Windows.
-- Right after NVil starts, some GUI elements might flicker. The flickering will disappear after a while of using the program.
-- Some UI elements, like radial menus, setting some options in /Edit → Preferences/, or moving child windows, can cause the viewport to briefly flicker, though this has improved in the most recent NVil versions.
-- Radial menus are slightly slower to draw on screen than on MS Windows.
+- Radial menus are probably slightly slower to draw on screen than on MS Windows.
 - Top menu items are trailed with an ampersand character.
-- Switching from single-view to quad-view (and vice-versa) for the first time in each session, might be slower than subsequent switches.
 ** .NET version
 - Two black rectangles appear on top and at the bottom of the splash screen.
+- Right after NVil starts, some GUI elements might flicker. The flickering will disappear after a while of using the program.
+- Some UI elements, like radial menus, setting some options in /Edit → Preferences/, or moving child windows, can cause the viewport to briefly flicker, though this has improved in the most recent NVil versions.
+- Switching from single-view to quad-view (and vice-versa) for the first time in each session, might be slower than subsequent switches.
+- Some GUI actions might be slightly slower than on Windows.
 ** Mono Version
 - By default, non-standard Windows tooltips, which are used by some GUI elements, will throw ~System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]~ and will not appear on screen.
   This is mostly limited to top and bottom default toolbars, as well as custom user windows.
